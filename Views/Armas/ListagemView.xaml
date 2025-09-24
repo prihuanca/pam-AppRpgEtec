@@ -1,0 +1,38 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppRpgEtec.Views.Armas.ListagemView"
+             Title="Armas">
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <CollectionView ItemsSource="{Binding Armas}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding ArmaSelecionada}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Remover"
+                                           BackgroundColor="Red"
+                                           Command="{Binding BindingContext.RemoverArmaCommand, Source={x:Reference ArmaPage}}"
+                                           CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="10">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Nome}" FontAttributes="Bold" FontSize="18" />
+                                <Label Text="{Binding Dano, StringFormat='Dano: {0}'}" />
+                                <Label Text="{Binding PersonagemId, StringFormat='Personagem ID: {0}'}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Nova Arma"
+                Command="{Binding NovaArmaCommand}"
+                BackgroundColor="#2196F3"
+                TextColor="White"
+                Margin="0,10,0,0" />
+    </VerticalStackLayout>
+</ContentPage>

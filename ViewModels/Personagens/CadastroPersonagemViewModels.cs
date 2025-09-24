@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Linq;
 namespace AppRpgEtec.ViewModels.Personagens
 {
-    [QueryProperty("PersonagemSelecionado", "pId")]
+    [QueryProperty("PersonagemSelecionadoId", "pId")]
     public class CadastroPersonagemViewModel : BaseViewModel
     {
         private PersonagemService pService;
